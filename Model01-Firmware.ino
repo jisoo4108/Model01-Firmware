@@ -65,8 +65,9 @@
 #include <Kaleidoscope-OneShot.h>
 #include <Kaleidoscope-Escape-OneShot.h>
 #include <Kaleidoscope-LED-ActiveModColor.h>
-#include <Kaleidoscope-TapDance.h>
+/* #include <Kaleidoscope-TapDance.h> */
 #include <Kaleidoscope-MouseKeys.h>
+#include <Kaleidoscope-TopsyTurvy.h>
 
 
 /** This 'enum' is a list of all the macros used by the Model 01's firmware
@@ -88,19 +89,19 @@ enum { MACRO_VERSION_INFO,
      };
 
 // Tap-dance
-enum {
-      COLON,
-      LPB,
-      RPB,
-      DASH,
-      HOMEND,
-      DOT,
-      QUOTE,
-      LCB,
-      RCB,
-      BSP, // Backslash, Pipe
-      SLASH,
-};
+/* enum { */
+/*       COLON, */
+/*       LPB, */
+/*       RPB, */
+/*       DASH, */
+/*       HOMEND, */
+/*       DOT, */
+/*       QUOTE, */
+/*       LCB, */
+/*       RCB, */
+/*       BSP, // Backslash, Pipe */
+/*       SLASH, */
+/* }; */
 
 
 
@@ -185,24 +186,23 @@ KEYMAPS(
 #if defined (PRIMARY_KEYMAP_CUSTOM)
   // Edit this keymap to make a custom layout
   [PRIMARY] = KEYMAP_STACKED
-  (M(F11),                  Key_1,        Key_2,         Key_3,         Key_4,         Key_5,     TD(DOT),
-   Key_Backtick,            Key_Q,        Key_W,         Key_E,         Key_R,         Key_T,     TD(LPB),
+  (M(F11),                  Key_1,        Key_2,         Key_3,         Key_4,         Key_5,     Key_LBracket,
+   Key_Backtick,            Key_Q,        Key_W,         Key_E,         Key_R,         Key_T,     Key_LeftParen,
    Key_Tab,                 Key_A,        Key_S,         Key_D,         Key_F,         Key_G,
-   TD(HOMEND),              Key_Z,        Key_X,         Key_C,         Key_V,         Key_B,     TD(COLON),
+   Key_LEDEffectNext,              Key_Z,        Key_X,         Key_C,         Key_V,         Key_B,     TOPSY(Semicolon),
 
    OSM(LeftControl),        Key_Spacebar, Key_LeftGui,   Key_Escape,
    ShiftToLayer(FUNCTION),
 
-   TD(QUOTE),            Key_6,        Key_7,         Key_8,         Key_9,         Key_0,     LockLayer(NUMPAD),
-   TD(RPB),                 Key_Y,        Key_U,         Key_I,         Key_O,         Key_P,     Key_Equals,
-   Key_H,                   Key_J,        Key_K,         Key_L,         Key_PageUp, Key_Quote,
-   TD(DASH),                Key_N,        Key_M,         Key_mouseScrollR,     Key_mouseScrollL,    Key_PageDown, Key_Minus,
+   Key_Quote,            Key_6,        Key_7,         Key_8,         Key_9,         Key_0,     LockLayer(NUMPAD),
+   LGUI(Key_Enter),                 Key_Y,        Key_U,         Key_I,         Key_O,         Key_P,     Key_Equals,
+   Key_H,                   Key_J,        Key_K,         Key_L,         Key_Home, Key_End,
+   TOPSY(Minus),                Key_N,        Key_M,         Key_Comma,     Key_Period,    Key_Slash, Key_Backslash,
 
    OSM(RightShift),          Key_Enter,    Key_Backspace, OSM(RightAlt),
    ShiftToLayer(FUNCTION)),
 
 #else
-
 #error "No default keymap defined. You should make sure that you have a line like '#define PRIMARY_KEYMAP_QWERTY' in your sketch"
 #endif
 
@@ -224,18 +224,18 @@ KEYMAPS(
    ___),
 
   [FUNCTION] =  KEYMAP_STACKED
-  (___,             Key_F1,                 Key_F2,               Key_F3,                   Key_F4,                   Key_F5,           Key_LEDEffectNext,
-   Key_Tab,         ___,                    ___,                  ___,                      Key_mouseUp,              Key_mouseWarpEnd, TD(LCB),
-   Key_Home,        ___,                    ___,                  Key_mouseL,               Key_mouseDn,              Key_mouseR,
-   Key_End,         Key_PrintScreen,        Key_Insert,           ___,                      Key_mouseBtnM,            Key_mouseWarpSW,  TD(SLASH),
+  (___,             Key_F1,                 Key_F2,               Key_F3,                   Key_F4,                   Key_F5,           Key_RBracket,
+   Key_Tab,         ___,                    ___,                  ___,                      Key_mouseUp,              Key_mouseWarpEnd, Key_RightParen,
+   Key_PageUp,        ___,                    ___,                  Key_mouseL,               Key_mouseDn,              Key_mouseR,
+   Key_PageDown,         Key_PrintScreen,        Key_Insert,           ___,                      Key_mouseBtnM,            Key_mouseWarpSW,  Key_Semicolon,
    ___,             Key_Delete,             ___,                  Key_mouseBtnL,
    ___,
 
-   LGUI(Key_Enter), Key_F6,                 Key_F7,               Key_F8,                   Key_F9,                   Key_F10,          Key_F12,
-   TD(RCB),         Consumer_ScanNextTrack, Key_LeftCurlyBracket, Key_RightCurlyBracket,    Key_LeftBracket,          Key_RightBracket, Key_F13,
+   TOPSY(Quote), Key_F6,                 Key_F7,               Key_F8,                   Key_F9,                   Key_F10,          Key_F12,
+   ___,         Consumer_ScanNextTrack, Key_LeftCurlyBracket, Key_RightCurlyBracket,    Key_LeftBracket,          Key_RightBracket, Key_F13,
   Key_LeftArrow,    Key_DownArrow,          Key_UpArrow,          Key_RightArrow,           ___,                      ___,
-   TD(BSP),         ___,                    Consumer_Mute,        Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,              ___,
-   Key_mouseBtnR,   ___,                    Key_Enter,            ___,
+   Key_Minus,         ___,                    Consumer_Mute,        Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,              ___,
+   Key_mouseBtnR,   ___,                    ___,            ___,
    ___)
 ) // KEYMAPS(
 
@@ -369,55 +369,55 @@ USE_MAGIC_COMBOS({.action = toggleKeyboardProtocol,
                  });
 
 // Tap dance methods
-void tapDanceAction(uint8_t tapDanceIndex, byte row, byte col, uint8_t tapCount, kaleidoscope::plugin::TapDance::ActionType tapDanceAction) {
+/* void tapDanceAction(uint8_t tapDanceIndex, byte row, byte col, uint8_t tapCount, kaleidoscope::plugin::TapDance::ActionType tapDanceAction) { */
 
-  switch (tapDanceIndex) {
-  case COLON:
-    return tapDanceActionKeys(tapCount, tapDanceAction,
-                              LSHIFT(Key_Semicolon),
-                              Key_Semicolon);
-  case LPB:
-      return tapDanceActionKeys(tapCount, tapDanceAction,
-                                Key_LeftParen,
-                                Key_LeftBracket);
-  case RPB:
-      return tapDanceActionKeys(tapCount, tapDanceAction,
-                                Key_RightParen,
-                                Key_RightBracket);
-  case DASH:
-    return tapDanceActionKeys(tapCount, tapDanceAction,
-                              LSHIFT(Key_Minus),
-                              Key_Minus);
-  case HOMEND:
-    return tapDanceActionKeys(tapCount, tapDanceAction,
-                              Key_Home,
-                              Key_End);
-  case DOT:
-    return tapDanceActionKeys(tapCount, tapDanceAction,
-                              Key_Period,
-                              Key_Comma);
-  case QUOTE:
-    return tapDanceActionKeys(tapCount, tapDanceAction,
-                              Key_Quote,
-                              LSHIFT(Key_Quote));
-  case LCB:
-    return tapDanceActionKeys(tapCount, tapDanceAction,
-                              Key_LeftCurlyBracket,
-                              LSHIFT(Key_Comma));
-  case RCB:
-    return tapDanceActionKeys(tapCount, tapDanceAction,
-                              Key_RightCurlyBracket,
-                              LSHIFT(Key_Period));
-  case BSP:
-    return tapDanceActionKeys(tapCount, tapDanceAction,
-                              Key_Backslash,
-                              Key_Pipe);
-  case SLASH:
-    return tapDanceActionKeys(tapCount, tapDanceAction,
-                              Key_Slash,
-                              LSHIFT(Key_Slash));
-  }
-}
+/*   switch (tapDanceIndex) { */
+/*   case COLON: */
+/*     return tapDanceActionKeys(tapCount, tapDanceAction, */
+/*                               LSHIFT(Key_Semicolon), */
+/*                               Key_Semicolon); */
+/*   case LPB: */
+/*       return tapDanceActionKeys(tapCount, tapDanceAction, */
+/*                                 Key_LeftParen, */
+/*                                 Key_LeftBracket); */
+/*   case RPB: */
+/*       return tapDanceActionKeys(tapCount, tapDanceAction, */
+/*                                 Key_RightParen, */
+/*                                 Key_RightBracket); */
+/*   case DASH: */
+/*     return tapDanceActionKeys(tapCount, tapDanceAction, */
+/*                               LSHIFT(Key_Minus), */
+/*                               Key_Minus); */
+/*   case HOMEND: */
+/*     return tapDanceActionKeys(tapCount, tapDanceAction, */
+/*                               Key_Home, */
+/*                               Key_End); */
+/*   case DOT: */
+/*     return tapDanceActionKeys(tapCount, tapDanceAction, */
+/*                               Key_Period, */
+/*                               Key_Comma); */
+/*   case QUOTE: */
+/*     return tapDanceActionKeys(tapCount, tapDanceAction, */
+/*                               Key_Quote, */
+/*                               LSHIFT(Key_Quote)); */
+/*   case LCB: */
+/*     return tapDanceActionKeys(tapCount, tapDanceAction, */
+/*                               Key_LeftCurlyBracket, */
+/*                               LSHIFT(Key_Comma)); */
+/*   case RCB: */
+/*     return tapDanceActionKeys(tapCount, tapDanceAction, */
+/*                               Key_RightCurlyBracket, */
+/*                               LSHIFT(Key_Period)); */
+/*   case BSP: */
+/*     return tapDanceActionKeys(tapCount, tapDanceAction, */
+/*                               Key_Backslash, */
+/*                               Key_Pipe); */
+/*   case SLASH: */
+/*     return tapDanceActionKeys(tapCount, tapDanceAction, */
+/*                               Key_Slash, */
+/*                               LSHIFT(Key_Slash)); */
+/*   } */
+/* } */
 
 // First, tell Kaleidoscope which plugins you want to use.
 // The order can be important. For example, LED effects are
@@ -511,7 +511,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   OneShot,
   EscapeOneShot,
   ActiveModColorEffect,
-  TapDance
+  TopsyTurvy
 
 );
 
