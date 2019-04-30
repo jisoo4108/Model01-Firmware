@@ -195,8 +195,8 @@ KEYMAPS(
    ShiftToLayer(FUNCTION),
 
    Key_Quote,            Key_6,        Key_7,         Key_8,         Key_9,         Key_0,     LockLayer(NUMPAD),
-   LGUI(Key_Enter),                 Key_Y,        Key_U,         Key_I,         Key_O,         Key_P,     Key_Equals,
-   Key_H,                   Key_J,        Key_K,         Key_L,         Key_Home, Key_End,
+   Key_F17,                 Key_Y,        Key_U,         Key_I,         Key_O,         Key_P,     Key_Equals,
+   Key_H,                   Key_J,        Key_K,         Key_L,         Key_Semicolon, TOPSY(Quote),
    Key_Minus,                Key_N,        Key_M,         Key_Comma,     Key_Period,    Key_Slash, Key_Backslash,
 
    OSM(RightShift),          Key_Enter,    Key_Backspace, OSM(RightAlt),
@@ -232,7 +232,7 @@ KEYMAPS(
    ___,
 
    TOPSY(Quote), Key_F6,                 Key_F7,               Key_F8,                   Key_F9,                   Key_F10,          Key_F12,
-   ___,         Consumer_ScanNextTrack, Key_LeftCurlyBracket, Key_RightCurlyBracket,    Key_LeftBracket,          Key_RightBracket, Key_F13,
+   Key_F18,         Consumer_ScanNextTrack, Key_LeftCurlyBracket, Key_RightCurlyBracket,    Key_LeftBracket,          Key_RightBracket, Key_F13,
   Key_LeftArrow,    Key_DownArrow,          Key_UpArrow,          Key_RightArrow,           ___,                      Key_F14,
    Key_Minus,         ___,                    Consumer_Mute,        Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,              ___,
    Key_mouseBtnR,   ___,                    ___,            ___,
