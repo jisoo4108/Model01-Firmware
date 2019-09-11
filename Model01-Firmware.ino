@@ -86,6 +86,7 @@
 enum { MACRO_VERSION_INFO,
        MACRO_ANY,
        F11,
+       MACRO_SWITCH
      };
 
 // Tap-dance
@@ -191,11 +192,11 @@ KEYMAPS(
    Key_Tab,                 Key_A,        Key_S,         Key_D,         Key_F,         Key_G,
    Key_LEDEffectNext,              Key_Z,        Key_X,         Key_C,         Key_V,         Key_B,     TOPSY(Semicolon),
 
-   OSM(LeftControl),        Key_Spacebar, Key_LeftGui,   Key_Escape,
+   OSM(LeftControl),        Key_Spacebar, Key_RGui,   Key_Escape,
    ShiftToLayer(FUNCTION),
 
    Key_Quote,            Key_6,        Key_7,         Key_8,         Key_9,         Key_0,     LockLayer(NUMPAD),
-   Key_F17,                 Key_Y,        Key_U,         Key_I,         Key_O,         Key_P,     Key_Equals,
+   M(MACRO_SWITCH),                 Key_Y,        Key_U,         Key_I,         Key_O,         Key_P,     Key_Equals,
    Key_H,                   Key_J,        Key_K,         Key_L,         Key_Semicolon, TOPSY(Quote),
    Key_Minus,                Key_N,        Key_M,         Key_Comma,     Key_Period,    Key_Slash, Key_Backslash,
 
@@ -232,7 +233,7 @@ KEYMAPS(
    ___,
 
    TOPSY(Quote), Key_F6,                 Key_F7,               Key_F8,                   Key_F9,                   Key_F10,          Key_F12,
-   Key_F18,         Consumer_ScanNextTrack, Key_LeftCurlyBracket, Key_RightCurlyBracket,    Key_LeftBracket,          Key_RightBracket, Key_F13,
+   ___,         Consumer_ScanNextTrack, Key_LeftCurlyBracket, Key_RightCurlyBracket,    Key_LeftBracket,          Key_RightBracket, Key_F13,
   Key_LeftArrow,    Key_DownArrow,          Key_UpArrow,          Key_RightArrow,           ___,                      Key_F14,
    Key_Minus,         ___,                    Consumer_Mute,        Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,              ___,
    Key_mouseBtnR,   ___,                    ___,            ___,
@@ -306,7 +307,12 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   case MACRO_ANY:
     anyKeyMacro(keyState);
     break;
+
+  case MACRO_SWITCH:
+    return MACRODOWN(D(RGui), T(Enter), U(RGui));
   }
+
+
   return MACRO_NONE;
 }
 
