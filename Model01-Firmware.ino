@@ -192,7 +192,7 @@ KEYMAPS(
    Key_Tab,                 Key_A,        Key_S,         Key_D,         Key_F,         Key_G,
    Key_LEDEffectNext,              Key_Z,        Key_X,         Key_C,         Key_V,         Key_B,     TOPSY(Semicolon),
 
-   OSM(LeftControl),        Key_Spacebar, Key_RGui,   Key_Escape,
+   OSM(LeftControl),        Key_Spacebar, Key_LGui,   Key_Escape,
    ShiftToLayer(FUNCTION),
 
    Key_Quote,            Key_6,        Key_7,         Key_8,         Key_9,         Key_0,     LockLayer(NUMPAD),
@@ -200,7 +200,7 @@ KEYMAPS(
    Key_H,                   Key_J,        Key_K,         Key_L,         Key_Semicolon, TOPSY(Quote),
    Key_Minus,                Key_N,        Key_M,         Key_Comma,     Key_Period,    Key_Slash, Key_Backslash,
 
-   OSM(RightShift),          Key_Enter,    Key_Backspace, OSM(RightAlt),
+   OSM(RightShift),          Key_Enter,    Key_Backspace, OSM(LeftAlt),
    ShiftToLayer(FUNCTION)),
 
 #else
@@ -309,7 +309,7 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
     break;
 
   case MACRO_SWITCH:
-    return MACRODOWN(D(RGui), T(Enter), U(RGui));
+    return MACRODOWN(D(LGui), T(Enter), U(LGui));
   }
 
 
